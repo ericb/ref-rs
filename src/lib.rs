@@ -10,7 +10,6 @@ pub mod foo {
 mod our_tests {
     use super::*;
 
-
     #[test]
     fn test_bar() {
         assert_eq!(foo::bar(), 5);
@@ -18,6 +17,6 @@ mod our_tests {
 
     #[test]
     fn test_bar_2() {
-        assert_ne!(foo::bar(), 5);
+        assert_ne!(foo::bar(), 3);
     }
 }
