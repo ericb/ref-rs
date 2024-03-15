@@ -1,6 +1,11 @@
+//importing in execute! macro
+#[macro_use]
+extern crate crossterm;
+
 use clap::{Parser, Subcommand};
 
 mod command;
+mod term;
 
 #[derive(Parser)]
 #[command(name = "ref")]
@@ -28,7 +33,10 @@ fn main() {
     match &cli.command {
         // example of inline definition
         Commands::Search { text } => match text {
-            Some(text) => println!("begin search with matches to {:?}", text),
+            Some(text) => {
+                println!("begin search with matches to {:?}", text);
+                term::handle_events().unwrap();
+            },
             None => println!("begin search with top commands showing.."),
         },
 
